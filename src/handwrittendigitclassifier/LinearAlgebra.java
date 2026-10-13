@@ -42,6 +42,16 @@ public class LinearAlgebra
         return vectorSum;
     }
     
+    public static float[] vectorScalarProduct(float[] vector, float scalar)
+    {
+        float[] result = new float[vector.length];
+        for (int i = 0; i < vector.length; i++)
+        {
+            result[i] = vector[i] * scalar;
+        }
+        return result;
+    }
+    
     public static float[][] matrixSum(float[][] matrixA, float[][] matrixB)
     {
         assert(matrixA.length == matrixB.length);
@@ -54,6 +64,52 @@ public class LinearAlgebra
             result[i] = vectorSum(matrixA[i], matrixB[i]);
         }
         return result;
+    }
+    
+    public static float[][] matrixScalarProduct(float[][] matrix, float scalar)
+    {
+        float[][] result = new float[matrix.length][matrix[0].length];
+        for (int i = 0; i < matrix.length; i++)
+        {
+            for (int j = 0; j < matrix[0].length; j++)
+            {
+                result[i][j] = matrix[i][j] * scalar;
+            }
+        }
+        return result;
+    }
+    
+    public static float[][] matrixTranspose(float[][] matrix)
+    {
+        float[][] result = new float[matrix[0].length][matrix.length];
+        for (int i = 0; i < matrix.length; i++)
+        {
+            for (int j = 0; j < matrix[0].length; j++)
+            {
+                result[j][i] = matrix[i][j];
+            }
+        }
+        return result;
+    }
+    
+    public static float vectorMax(float[] vector)
+    {
+        float max = vector[0];
+        for(int i = 1; i < vector.length; i++)
+        {
+            if (vector[i] > max) max = vector[i];
+        }
+        return max;
+    }
+    
+    public static int vectorMaxIndex(float[] vector)
+    {
+        int maxIndex = 0;
+        for(int i = 1; i < vector.length; i++)
+        {
+            if (vector[i] > vector[maxIndex]) maxIndex = i;
+        }
+        return maxIndex;
     }
     
     public static float[] vectorDifference(float[] vectorA, float[] vectorB)

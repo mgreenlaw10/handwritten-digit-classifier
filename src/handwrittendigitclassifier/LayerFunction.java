@@ -9,6 +9,8 @@ public class LayerFunction
     float[] biasVector;
     ActivationFunction activationFunction;
     
+    public float[] lastPreActivationResult;
+    
     int inputDimension;
     int outputDimension;
     
@@ -42,12 +44,8 @@ public class LayerFunction
     
     public float[] apply(float[] inputVector)
     {
-        return 
-            activationFunction.apply (
-                LinearAlgebra.vectorSum (
-                    LinearAlgebra.matrixVectorProduct(weightMatrix, inputVector), 
-                    biasVector
-                )
-            );
+        float[] affineResult = LinearAlgebra.vectorSum(LinearAlgebra.matrixVectorProduct(weightMatrix, inputVector), biasVector);
+        this.lastPreActivationResult = affineResult;
+        return activationFunction.apply(affineResult);
     }
 }
