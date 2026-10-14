@@ -79,9 +79,11 @@ public class NeuralNetwork
             
             // Calculate error vector for final layer.
             // Softmax + cross entropy derivative shortcut: dL/dz = approx - actual
+            //
+            // This is kinda hacky. Probably shouldn't depend on shortcut if I continue to develop this.
             errorVectors[lastLayer] = LinearAlgebra.vectorDifference(approx, actual);
             
-            // Propagate error vector calculation to previous layers
+            // Propagate error vector calculation to previous layers.
             for (int i = lastLayer - 1; i >= 0; i--)
             {
                 float[][] wT = LinearAlgebra.matrixTranspose(layerFunctions[i + 1].weightMatrix);
