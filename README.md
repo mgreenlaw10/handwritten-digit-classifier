@@ -8,7 +8,7 @@ The network is written by hand: the linear algebra, activation functions, forwar
 
 - the `MNISTLoader` class, which parses the IDX data files
 - the `Makefile`
-- reviewing and debugging my math, and restructuring how `train()` accumulates gradients per layer and applies the update
+- reviewing my math
 
 ## Math implemented
 
