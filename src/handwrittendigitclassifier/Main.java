@@ -6,7 +6,8 @@ import java.util.List;
 public class Main {
     
     static final int TRAINING_ITERATIONS = 10;
-    static final float TRAINING_FACTOR = 0.1f;
+    static final float TRAINING_FACTOR = 1.0f;
+    static final int BATCH_SIZE = 32;
     
     public static void main(String[] args) 
     {
@@ -18,7 +19,7 @@ public class Main {
             
             for (int i = 0; i < TRAINING_ITERATIONS; i++)
             {
-                nn.train(trainingSet, TRAINING_FACTOR);
+                nn.train(trainingSet, TRAINING_FACTOR, BATCH_SIZE);
                 System.out.println("Finished training iteration #" + (i+1));
             }
             

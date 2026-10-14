@@ -1,6 +1,7 @@
 package handwrittendigitclassifier;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class NeuralNetwork 
@@ -42,6 +43,18 @@ public class NeuralNetwork
             layerOutputCache[i] = result;
         }
         return result;
+    }
+    
+    public void train(List<TrainingObject> trainingObjects, float learningRate, int batchSize)
+    {
+        Collections.shuffle(trainingObjects);
+        for (int i = 0; i < trainingObjects.size(); i += batchSize)
+        {
+            int toIndex = i + batchSize;
+            if (toIndex > trainingObjects.size()) toIndex = trainingObjects.size() - 1;
+            
+            train(trainingObjects.subList(i, toIndex), learningRate);
+        }
     }
     
     public void train(List<TrainingObject> trainingObjects, float learningRate)
